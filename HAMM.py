@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
-def hamm(str1, str2):
-    distance = 0
-    assert len(str1) == len(str2)
-    for i in range(len(str1)):
-        if str1[i] != str2[i]:
-            distance += 1
-    return distance
+def hamm(seq_1, seq_2):
+    dist = 0
+    assert len(seq_1) == len(seq_2)
+    for i in range(len(seq_1)):
+        if seq_1[i] != seq_2[i]:
+            dist += 1
+    return dist
 
 with open("data/rosalind_hamm.txt", "r") as f:
-    str1 = f.readline().strip()
-    str2 = f.readline().strip()
-print(hamm(str1, str2))
+    seq_1 = f.readline().strip()
+    seq_2 = f.readline().strip()
+print(hamm(seq_1, seq_2))
