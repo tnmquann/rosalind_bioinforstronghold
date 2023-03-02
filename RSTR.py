@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
+# Matching Random Motifs
 """
-First count the C/Gs and A/Ts. The probability that any given letter is A is (1-x)/2, as is T, and the probability that a letter is C is x/2, as is G.
-The probability of getting a sequence S is p = ( P(C) ^ (#ofC+G) * P(A) ^ (#ofA+T) ).
-The probability of getting the sequence at least once in N tries is the same a 1 minus the probability of never getting it, which is equal to (1 - p) ^ N. Thus the answer is 1 - (1 - p) ^ N
+Tình số lượng CG và AT. Từ bài PROB.py, xác suất cho G+C là $\dfrac{x}{2}, A+T là $\dfrac{1-x}{2}$
+Xác suất nhận được trình sự giống ${s}$ là $p = \left(\dfrac{x}{2}^{C+G}\times$\dfrac{1-x}{2}$^{A+T}\right)$.
+Xác suất thu được trình tự ít nhất 1 lần trong ${N}$ lần thử = 1 - Pr(xác suất không bao giờ nhận được trình tự) = 1 - (1 - p)^N
 """
 # Matching Random Motifs
 
@@ -11,9 +12,9 @@ with open("data/rosalind_rstr.txt", "r") as f:
     N, x = f.readline().strip().split(" ")
     N = int(N)
     x = float(x)
-    s = f.readline().strip()
+    str = f.readline().strip()
 
-at = s.count('A') + s.count('T')
-gc = s.count('G') + s.count('C')
-P_s = pow(x/2, gc) * pow((1-x)/2, at)
-print(1 - pow(1 - P_s, N))
+sum_AT = str.count('A') + str.count('T')
+sum_GC = str.count('G') + str.count('C')
+pr = pow(x/2, sum_GC) * pow((1-x)/2, sum_AT)
+print(1 - pow(1 - pr, N))
